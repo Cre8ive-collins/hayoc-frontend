@@ -1,0 +1,49 @@
+<app-navigation></app-navigation>
+<div class="container">
+  <div class="col-12">
+    <div class="row">
+    </div>
+    <div class="conatainer">
+      <p>All Patients</p>
+      <div class="row d-flex justify-content-md-center align-items-center">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th [appSort]="allPatient" data-order="desc" data-name="firstname" scope="col">Firstname</th>
+              <th [appSort]="allPatient" data-order="desc" data-name="surname" scope="col">Surname</th>
+              <th [appSort]="allPatient" data-order="desc" data-name="age"  scope="col">Age</th>
+              <th  [appSort]="allPatient" data-order="desc" data-name="gender" scope="col">Gender</th>
+              <th [appSort]="allPatient" data-order="desc" data-name="bmi" scope="col">BMI</th>
+              <th scope="col">OP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let patient of allPatient; let index = index">
+              <th scope="row">{{ index + 1 }}</th>
+              <td>{{ patient.firstname }}</td>
+              <td>{{ patient.surname }}</td>
+              <td>{{ patient.age }}</td>
+              <td>{{ patient.gender }}</td>
+              <td>{{ patient.bmi | number : '1.2-2' }}</td>
+              <td><a routerLink="/healthworker/singlepatient" [queryParams]="{prop: patient.id }"class="btn btn-primary">Action</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container p-5">
+  <canvas baseChart
+    [datasets] = "barChartData"
+    [labels] =  "barChartLabels"
+    [options] = "barChartOptions"
+    [legend] = "barChartLegend"
+    [chartType] = "barChartType"
+  >
+
+  </canvas>
+</div>
+

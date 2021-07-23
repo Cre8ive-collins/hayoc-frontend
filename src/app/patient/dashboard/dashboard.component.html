@@ -1,0 +1,43 @@
+<div class="bg-dark w-100">
+  <div class="container">
+    <nav class="p-3">
+     <a routerLink="/" > <h3 class="navbar-brand text-light text-center w-100">
+      Electronic Medical Record ( Web App )
+     </h3></a>
+    </nav>
+  </div>
+</div>
+
+<div class="container" *ngIf="data">
+  <div class="row">
+    <div class="col-md-6" >
+      <h1>Patient Data</h1>
+      <hr>
+      <h2 > Name: {{data.firstname}}&nbsp;{{data.surname}}</h2>
+      <h2 > Age: {{data.age}}</h2>
+      <h2 > Gender: {{data.gender}}</h2>
+      <h2 > Height: {{data.height}}</h2>
+      <h2 > Weight: {{data.weight}}</h2>
+      <h2 > BMI: {{data.bmi | number }}</h2>
+      <h2 > State: {{data.state}}</h2>
+      <h2 > LGA: {{data.lga}}</h2>
+      <h2 > Ward: {{data.ward}}</h2>
+    </div>
+    <div class="col-md-6">
+      <h1>Patient Image</h1>
+      <hr>
+      <div>
+        <img [src]="imageSrc" alt="" class="img-fluid img-thumbnail" width="50%"> <br>
+        <div *ngIf="checkDiagnosis" class="m-2">
+          <ul>
+            <li *ngFor="let result of diagnosisDate;  let i = index"> ({{i+1}}) <a routerLink="encounter" [queryParams]="{prop: result.id }">  {{ result.date }} </a></li>
+          </ul>
+        </div>
+        <button class="btn btn-dark mb-5" (click) = "diagnosis(data.id)">My Diagnosis</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="!data">
+  Loading..............
+</div>

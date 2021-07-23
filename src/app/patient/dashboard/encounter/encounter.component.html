@@ -1,0 +1,29 @@
+<div class="bg-dark w-100">
+  <div class="container">
+    <nav class="p-3">
+     <a routerLink="/" > <h3 class="navbar-brand text-light text-center w-100">
+      Electronic Medical Record ( Web App )
+     </h3></a>
+    </nav>
+  </div>
+</div>
+
+<div class="container" *ngIf="data">
+  <div class="row">
+    <div class="col-md-6" >
+      <h1>Patient Data</h1>
+      <hr>
+      <h2 > Date: {{data.date}}</h2>
+      <h2 > Time: {{data.time}}</h2>
+      <h2 > Diagnosis: {{data.diagnosis}}</h2>
+      <h2 > Height: {{data.height}}</h2>
+      <h2 > Weight: {{data.weight}}</h2>
+      <h2 > Complaint: {{data.complaints }}</h2>
+      <h2 > Treatment: {{data.treatment}}</h2>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="!data">
+  Loading..............
+</div>

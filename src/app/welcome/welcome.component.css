@@ -1,0 +1,22 @@
+.high{
+  height: 90vh;
+}
+
+.button-box{
+  height: 35vh;
+}
+
+.border{
+  border: 2px solid black !important;
+  border-radius: 10px;
+}
+
+.button-box:hover{
+  color: white;
+  background-color: rgb(58, 54, 54);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}

@@ -1,0 +1,13 @@
+ul li{
+  list-style: none;
+  float: left;
+  padding: 1rem 2rem 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+fa-icon{
+  font-size: 2rem;
+}

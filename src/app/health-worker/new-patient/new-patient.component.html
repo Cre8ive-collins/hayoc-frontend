@@ -1,0 +1,93 @@
+
+<app-navigation></app-navigation>
+<div class="comtainer">
+  <div class="row full-height">
+    <div class="col-md-12 h-100 d-flex justify-content-center align-items-center">
+      <div class="col-8">
+        <h4>
+          Register New Patient
+        </h4>
+        <small class="text-danger" *ngIf="!newPtientForm.valid">Feilds marked (*) are required</small>
+        <hr>
+        <div class="form-holder" [ngClass] ="{'d-none' : captureImage}">
+          <form class="row" #newPtientForm="ngForm">
+            <div class="col-6">
+              <div class="form-group mt-2">
+                <label for="name">First Name</label><span class="text-danger">&nbsp;*</span>
+                <input type="text" class="form-control" placeholder="Name" name="firstname" ngModel required>
+                </div>
+                <div class="form-group mt-2">
+                  <label for="age">Age</label><span class="text-danger">&nbsp;*</span>
+                  <input type="text" class="form-control" placeholder="Age" ngModel name="age">
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender</label><span class="text-danger">&nbsp;*</span>
+                  <select class="form-control mt-2" id="exampleFormControlSelect1" ngModel name="gender" required>
+                    <option selected style="color: gray;">Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+                <div class="form-group mt-2">
+                  <label for="height">Height</label><span class="text-danger">&nbsp;*</span>
+                  <input type="number" class="form-control" placeholder="Height" [(ngModel)]="height" (change)="updateForm($event)" name="height" required>
+                </div>
+                <div class="form-group mt-2">
+                  <label for="weight">Weight</label><span class="text-danger">&nbsp;*</span>
+                  <input type="number" class="form-control" placeholder="Weight" [(ngModel)]="weight" name="weight" (change)="updateForm($event)" required>
+                </div>
+                 <button class="btn btn-dark mt-2" (click)="takePicture()" *ngIf="newPtientForm.valid">
+                  Capture Image &nbsp; <fa-icon [icon]="faGt" class="text-light"></fa-icon><fa-icon [icon]="faGt" class="text-light"></fa-icon>
+                 </button>
+            </div>
+            <div class="col-6">
+              <div class="form-group mt-2">
+                <label for="surname">Surname</label><span class="text-danger">&nbsp;*</span>
+                <input type="text" class="form-control" placeholder="Surname" name="surname" ngModel required>
+              </div>
+              <div class="form-group mt-2">
+                <label for="state">State</label>
+                <input type="text" class="form-control" placeholder="State" name="state" [(ngModel)]="state"(change)="updateForm($event)" required>
+              </div>
+              <div class="form-group mt-2">
+                <label for="lga">L.G.A</label><span class="text-danger">&nbsp;*</span>
+                <input type="text" class="form-control" placeholder="LGA" name="lga" [(ngModel)]="lga" (change)="updateForm($event)" required>
+              </div>
+              <div class="form-group mt-2">
+                <label for="name">Ward</label><span class="text-danger">&nbsp;*</span>
+                <input type="text" class="form-control" placeholder="Ward" name="ward" [(ngModel)]="ward" required readonly>
+              </div>
+              <div class="form-group mt-2">
+                <label for="bmi">B.M.I</label>
+                <input type="number" class="form-control" placeholder="BMI" name="bmi" [(ngModel)]="bmi" required readonly>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="container" *ngIf="captureImage" >
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <webcam [height]="200" [width]="200"
+              *ngIf="showWebcam" [trigger]="triggerObservable"
+              (imageCapture)="handleImage($event)"
+              [allowCameraSwitch]="true">
+              </webcam>
+              <div>
+
+              <button class="btn btn-success col-xs-6 col-md-3" (click)="takeSnapshot()">Capture</button>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                      <div class="" [innerHtml]="showImage" *ngIf="captured">
+                      </div>
+                      <button class="btn btn-success col-xs-6 col-md-3 mt-2" *ngIf="captured" (click)="done(newPtientForm.value)" >Done</button>
+                  </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

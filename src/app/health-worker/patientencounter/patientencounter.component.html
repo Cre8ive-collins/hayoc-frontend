@@ -1,0 +1,70 @@
+<app-navigation></app-navigation>
+<div class="container">
+  <h3>
+    New Encounter For {{ data[0].firstname }}  {{ data[0].surname }} (Age : {{ data[0].age }})
+  </h3>
+
+  <form (ngSubmit)="formSubmit(encounterForm)" #encounterForm="ngForm">
+    <input type="number" class="form-control d-none" [ngModel]="data[0].id" name="patientId" >
+    <div class="col-md-6">
+      <small class="text-danger" *ngIf="!encounterForm.valid">All Feilds are required</small>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Date</label>
+        <input type="date" class="form-control" ngModel name="date" required>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Time</label>
+        <input type="time" class="form-control" ngModel name="time" required>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Kind of Visit</label>
+        <select class="form-control" ngModel name="visitkind" required>
+          <option>Select Kind of Visit</option>
+          <option>First Time Visit</option>
+          <option>Repeat Visit</option>
+        </select>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Weight</label>
+        <input type="number" class="form-control" ngModel name="weight" required>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Height</label>
+        <input type="number" class="form-control" ngModel name="height" required>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Temperature</label>
+        <input type="number" class="form-control" ngModel name="temperature" required>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Respiratory Rate</label>
+        <input type="number" class="form-control" ngModel name="resporiratory" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Complaints</label>
+        <textarea required class="form-control" id="exampleFormControlTextarea1" rows="3" ngModel name="complaints"></textarea>
+      </div>
+      <div class="form-group ">
+        <label for="exampleInputEmail1">Diagnosis</label>
+        <select class="form-control" ngModel name="diagnosis" required >
+          <option>Hypertension</option>
+          <option>Pneumonia</option>
+          <option>Malaria</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Treatment Plan</label>
+        <textarea required class="form-control" id="exampleFormControlTextarea1" rows="3" ngModel name="treatment"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-dark m-2">Save</button>
+      <button  class="btn btn-primary m-2">Transfer</button>
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+  </form>
+</div>
+
+<div class="m-5">
+  erro
+</div>
